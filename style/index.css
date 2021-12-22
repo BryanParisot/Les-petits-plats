@@ -1,0 +1,15 @@
+.sizeCard {
+  width: 380px;
+  height: 364px;
+}
+.colorStyleImg {
+  height: 178px;
+  background-color: #c7bebe;
+}
+
+.containDescription {
+  font-size: 18px;
+}
+.sizeList {
+  font-size: 12px;
+}
