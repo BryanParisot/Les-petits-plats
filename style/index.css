@@ -13,3 +13,17 @@
 .sizeList {
   font-size: 12px;
 }
+
+.elispe {
+    white-space: wrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 140px;
+    width: 170px;
+  
+}
+.aaa {
+    
+  height: 140px;
+  width: 170px;
+}
