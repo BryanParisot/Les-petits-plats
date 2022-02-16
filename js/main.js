@@ -1,3 +1,4 @@
 import firstAlgo from "./firstAlgo.js";
 
-new firstAlgo().firstAlgo();
+const algo = new firstAlgo();
+algo.init();

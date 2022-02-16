@@ -1,3 +1,6 @@
+* {
+  list-style: none;
+}
 .sizeCard {
   width: 380px;
   height: 364px;
@@ -15,15 +18,149 @@
 }
 
 .elispe {
-    white-space: wrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    height: 140px;
-    width: 170px;
-  
-}
-.aaa {
-    
+  white-space: wrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
   height: 140px;
   width: 170px;
+}
+.aaa {
+  height: 140px;
+  width: 170px;
+}
+
+.listElementsIngedientsInput {
+  background-color: #3282f7;
+  height: 397px;
+  width: 667px;
+  border-radius: 5px;
+  z-index: 10000;
+}
+.ingredientsList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+
+.ingredient {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: white;
+  margin: 10px 20px 0px 20px;
+  width: 155px;
+  padding-left: 3px;
+}
+
+.ingredient:hover {
+  cursor: pointer;
+  background: white;
+  color: black;
+}
+
+.inputSearchIngredients {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 25px 0px 15px;
+}
+
+.inputSearch {
+  background: none;
+  border: none;
+  width: 230px;
+  color: white;
+}
+
+.inputSearch::placeholder {
+  color: white;
+}
+
+.btnIngredient {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: space-around;
+  background: #3282f7;
+  border-radius: 5px;
+  width: 170px;
+  height: 69px;
+  color: white;
+  cursor: pointer;
+}
+
+.btnIngredient:hover {
+  background: rgb(86, 156, 252);
+}
+
+#listElementsIngredientsInBtn {
+  display: none;
+}
+
+#btnAppareil {
+  background: #68d9a4;
+}
+
+#inputSearchAppareil {
+  background: #68d9a4;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 25px 35px 15px;
+}
+
+#inputSearchUstensile {
+  background: #ed6454;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 25px 35px 15px;
+}
+
+#listElementsAppareil {
+  display: none;
+  z-index: 1000;
+}
+
+/* #listElementsAppareilInput {
+  background: red;
+  height: 397px;
+  width: 667px;
+  border-radius: 5px;
+  z-index: 10000;
+} */
+
+#btnUstensiles {
+  background: #ed6454;
+}
+
+#inputSearchUstensile {
+  background: #ed6454;
+}
+
+.appareilList {
+  display: flex;
+  color: white;
+  flex-wrap: wrap;
+  background: #68d9a4;
+  padding: 10px 15px;
+}
+
+.ustensillList {
+  display: flex;
+  color: white;
+  flex-wrap: wrap;
+  background: #ed6454;
+  padding: 10px 15px;
+}
+
+#listElementsUstensiles {
+  display: none;
+  flex-direction: column;
+  height: auto;
+  width: auto;
+  border-radius: 5px;
+  z-index: 10000;
 }
