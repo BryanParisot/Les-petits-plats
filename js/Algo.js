@@ -127,12 +127,12 @@ function filterData(e) {
 }
 
 function displayIngredientInBtn(data) {
-  let abc = data.reduce((d, el) => {
-    let efg = el.ingredients || [];
-    return d.concat(efg.map((i) => i.ingredient.toLowerCase()));
+  let arrayIngredientBtn = data.reduce((d, el) => {
+    let currentIngredientBtn = el.ingredients || [];
+    return d.concat(currentIngredientBtn.map((i) => i.ingredient.toLowerCase()));
   }, []);
-  abc = [...new Set(abc)];
-  buildIngredients(abc);
+  arrayIngredientBtn = [...new Set(arrayIngredientBtn)];
+  buildIngredients(arrayIngredientBtn);
 }
 
 function buildIngredients(ingredients, canAddToIngredients = true) {
@@ -191,7 +191,7 @@ function filterIngredientInInput() {
   InputSearchIngredientInInput.addEventListener("input", (e) => {
     listIngredient.innerHTML = "";
     const valueInput = e.target.value.toLowerCase();
-    let test = dataArray
+    let arrayIngredientFilter = dataArray
       .filter(
         (el) =>
           el.name.toLowerCase().includes(dataInInputSearch) ||
@@ -203,12 +203,12 @@ function filterIngredientInInput() {
         []
       );
 
-    test = [...new Set(test)].filter((el) =>
+    arrayIngredientFilter = [...new Set(arrayIngredientFilter)].filter((el) =>
       el.toLowerCase().includes(valueInput)
     );
-    console.log("test ===", test);
+    console.log("test ===", arrayIngredientFilter);
 
-    buildIngredients(test, true);
+    buildIngredients(arrayIngredientFilter, true);
   });
 }
 filterIngredientInInput();
@@ -221,7 +221,7 @@ function filterAppareil() {
     listApliance.innerHTML = "";
     dataAppliances = [];
     const valueInputSearchAppreil = e.target.value.toLowerCase();
-    let aaaa = dataArray
+    let arrayAppareilFilter = dataArray
       .filter(
         (el) =>
           el.name.toLowerCase().includes(dataInInputSearch) ||
@@ -229,12 +229,12 @@ function filterAppareil() {
           el.ingredients[0].ingredient.toLowerCase().includes(dataInInputSearch)
       )
       .reduce((data, card) => data.concat(card.appliance), []);
-    aaaa = [...new Set(aaaa)].filter((el) =>
+    arrayAppareilFilter = [...new Set(arrayAppareilFilter)].filter((el) =>
       el.toLowerCase().includes(valueInputSearchAppreil)
     );
-    console.log(aaaa);
-    dataAppliances.push(aaaa);
-    displayAppliances(aaaa);
+    console.log(arrayAppareilFilter);
+    dataAppliances.push(arrayAppareilFilter);
+    displayAppliances(arrayAppareilFilter);
   });
 }
 filterAppareil();
@@ -245,7 +245,7 @@ function filterUstensil() {
     listUstensil.innerHTML = "";
     dataUstensils = [];
     let valueSearchUstensil = e.target.value.toLowerCase();
-    let bbbbb = dataArray
+    let arrayUstensilFilter = dataArray
       .filter(
         (el) =>
           el.name.toLowerCase().includes(dataInInputSearch) ||
@@ -253,11 +253,11 @@ function filterUstensil() {
           el.ingredients[0].ingredient.toLowerCase().includes(dataInInputSearch)
       )
       .reduce((data, card) => data.concat(card.ustensils.map((x) => x)), []);
-    bbbbb = [...new Set(bbbbb)].filter((el) =>
+    arrayUstensilFilter = [...new Set(arrayUstensilFilter)].filter((el) =>
       el.toLowerCase().includes(valueSearchUstensil)
     );
-    dataUstensils.push(bbbbb);
-    displayUstensils(bbbbb);
+    dataUstensils.push(arrayUstensilFilter);
+    displayUstensils(arrayUstensilFilter);
   });
 }
 filterUstensil();
@@ -279,7 +279,7 @@ function buildFilterButton(name) {
   const zoneBtn = document.getElementById("endroitBtn");
   const btn = document.createElement("button");
   btn.className =
-    "btn btn-secondary bg-primary d-flex justify-content-between mt-4";
+    "btn btn-secondary bg-primary d-flex justify-content-between mt-4 mr-1";
 
   btn.innerHTML = name;
 
