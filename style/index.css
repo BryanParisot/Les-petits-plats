@@ -36,6 +36,21 @@
   border-radius: 5px;
   z-index: 10000;
 }
+
+.listElementsAppliancesInput {
+  background-color: #68d9a4;
+  height: 397px;
+  width: 667px;
+  border-radius: 5px;
+  z-index: 10000;
+}
+.listElementsUtensilsInput {
+  background-color: #ed6454;
+  height: 397px;
+  width: 667px;
+  border-radius: 5px;
+  z-index: 10000;
+}
 .ingredientsList {
   display: flex;
   flex-wrap: wrap;
@@ -55,6 +70,40 @@
 }
 
 .ingredient:hover {
+  cursor: pointer;
+  background: white;
+  color: black;
+}
+.appliance {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: white;
+  margin: 10px 20px 0px 20px;
+  width: 155px;
+  padding-left: 3px;
+}
+
+.appliance:hover {
+  cursor: pointer;
+  background: white;
+  color: black;
+}
+.ustensil {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: white;
+  margin: 10px 20px 0px 20px;
+  width: 155px;
+  padding-left: 3px;
+}
+
+.ustensil:hover {
   cursor: pointer;
   background: white;
   color: black;
@@ -124,13 +173,13 @@
   z-index: 1000;
 }
 
-/* #listElementsAppareilInput {
+#listElementsAppareilInput {
   background: red;
   height: 397px;
   width: 667px;
   border-radius: 5px;
   z-index: 10000;
-} */
+}
 
 #btnUstensiles {
   background: #ed6454;
@@ -159,8 +208,6 @@
 #listElementsUstensiles {
   display: none;
   flex-direction: column;
-  height: auto;
-  width: auto;
   border-radius: 5px;
   z-index: 10000;
 }

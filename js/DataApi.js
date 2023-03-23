@@ -1,8 +1,8 @@
 export default class DataApi {
   async findData() {
     const url = "data/data.json";
-    let reponse = await fetch(url);
-    let data = await reponse.json();
+    let response = await fetch(url);
+    let data = await response.json();
 
     const recipes = data.recipes;
 
