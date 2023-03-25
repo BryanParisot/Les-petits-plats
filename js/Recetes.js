@@ -374,25 +374,13 @@ function performBySearch(recipes) {
   if (dataInInputSearch.length === 0) {
     return recipes;
   }
-
   if (dataInInputSearch.length > 2) {
-    for (let i = 0; i < recipes.length; i++) {
-      const recipe = recipes[i];
-      if (
-        recipe.name
-          .toLowerCase()
-          .includes(dataInInputSearch.toLocaleLowerCase()) ||
-        recipe.description
-          .toLowerCase()
-          .includes(dataInInputSearch.toLocaleLowerCase()) ||
-        recipe.ingredients[0].ingredient
-          .toLowerCase()
-          .includes(dataInInputSearch.toLocaleLowerCase())
-      ) {
-        results.push(recipe);
-      }
-    }
-    return results;
+    return recipes.filter(
+      (el) =>
+        el.name.toLowerCase().includes(dataInInputSearch) ||
+        el.description.toLowerCase().includes(dataInInputSearch) ||
+        el.ingredients[0].ingredient.toLowerCase().includes(dataInInputSearch) // TODO: to review
+    );
   }
   return recipes;
 }
@@ -438,7 +426,6 @@ function buildFilterButtonAppliance(name) {
   img.src = "./img/close.png";
   img.id = name;
 
-
   zoneBtn.appendChild(btn);
   btn.appendChild(span);
   span.appendChild(img);
@@ -462,7 +449,6 @@ function buildFilterButtonUstensil(name) {
   const img = document.createElement("img");
   img.src = "./img/close.png";
   img.id = name;
-
 
   zoneBtn.appendChild(btn);
   btn.appendChild(span);
