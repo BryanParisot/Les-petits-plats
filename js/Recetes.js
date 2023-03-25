@@ -369,16 +369,32 @@ function performByApplianceTags(recipes) {
 }
 
 function performBySearch(recipes) {
+  const results = [];
+
   if (dataInInputSearch.length === 0) {
     return recipes;
   }
-  console.log("datain", dataInInputSearch);
-  return recipes.filter(
-    (el) =>
-      el.name.toLowerCase().includes(dataInInputSearch) ||
-      el.description.toLowerCase().includes(dataInInputSearch) ||
-      el.ingredients[0].ingredient.toLowerCase().includes(dataInInputSearch) // TODO: to review
-  );
+
+  if (dataInInputSearch.length > 2) {
+    for (let i = 0; i < recipes.length; i++) {
+      const recipe = recipes[i];
+      if (
+        recipe.name
+          .toLowerCase()
+          .includes(dataInInputSearch.toLocaleLowerCase()) ||
+        recipe.description
+          .toLowerCase()
+          .includes(dataInInputSearch.toLocaleLowerCase()) ||
+        recipe.ingredients[0].ingredient
+          .toLowerCase()
+          .includes(dataInInputSearch.toLocaleLowerCase())
+      ) {
+        results.push(recipe);
+      }
+    }
+    return results;
+  }
+  return recipes;
 }
 
 function buildFilterButton(name) {
@@ -394,23 +410,15 @@ function buildFilterButton(name) {
   const span = document.createElement("span");
   span.className = "ml-3";
 
-  const svg = document.createElement("svg");
-  svg.style.width = "20";
-  svg.style.height = "20";
-  svg.style.viewBox = "0 0 20 20";
-  svg.style.xmlns = "http://www.w3.org/2000/svg";
-
-  const path = document.createElement("path");
-  path.style.d =
-    "M12.59 6L10 8.59L7.41 6L6 7.41L8.59 10L6 12.59L7.41 14L10 11.41L12.59 14L14 12.59L11.41 10L14 7.41L12.59 6ZM10 0C4.47 0 0 4.47 0 10C0 15.53 4.47 20 10 20C15.53 20 20 15.53 20 10C20 4.47 15.53 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z";
-  path.style.fill = "white";
+  const img = document.createElement("img");
+  img.src = "./img/close.png";
+  img.id = name;
 
   zoneBtn.appendChild(btn);
   btn.appendChild(span);
-  span.appendChild(svg);
-  svg.appendChild(path);
+  span.appendChild(img);
 
-  btn.addEventListener("click", listenTagToDelete);
+  img.addEventListener("click", listenTagToDelete);
 }
 
 function buildFilterButtonAppliance(name) {
@@ -426,23 +434,16 @@ function buildFilterButtonAppliance(name) {
   const span = document.createElement("span");
   span.className = "ml-3";
 
-  const svg = document.createElement("svg");
-  svg.style.width = "20";
-  svg.style.height = "20";
-  svg.style.viewBox = "0 0 20 20";
-  svg.style.xmlns = "http://www.w3.org/2000/svg";
+  const img = document.createElement("img");
+  img.src = "./img/close.png";
+  img.id = name;
 
-  const path = document.createElement("path");
-  path.style.d =
-    "M12.59 6L10 8.59L7.41 6L6 7.41L8.59 10L6 12.59L7.41 14L10 11.41L12.59 14L14 12.59L11.41 10L14 7.41L12.59 6ZM10 0C4.47 0 0 4.47 0 10C0 15.53 4.47 20 10 20C15.53 20 20 15.53 20 10C20 4.47 15.53 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z";
-  path.style.fill = "white";
 
   zoneBtn.appendChild(btn);
   btn.appendChild(span);
-  span.appendChild(svg);
-  svg.appendChild(path);
+  span.appendChild(img);
 
-  btn.addEventListener("click", listenTagToDeleteAppliance);
+  img.addEventListener("click", listenTagToDeleteAppliance);
 }
 
 function buildFilterButtonUstensil(name) {
@@ -458,29 +459,20 @@ function buildFilterButtonUstensil(name) {
   const span = document.createElement("span");
   span.className = "ml-3";
 
-  //TODO: add img
+  const img = document.createElement("img");
+  img.src = "./img/close.png";
+  img.id = name;
 
-  const svg = document.createElement("svg");
-  svg.style.width = "20";
-  svg.style.height = "20";
-  svg.style.viewBox = "0 0 20 20";
-  svg.style.xmlns = "http://www.w3.org/2000/svg";
-
-  const path = document.createElement("path");
-  path.style.d =
-    "M12.59 6L10 8.59L7.41 6L6 7.41L8.59 10L6 12.59L7.41 14L10 11.41L12.59 14L14 12.59L11.41 10L14 7.41L12.59 6ZM10 0C4.47 0 0 4.47 0 10C0 15.53 4.47 20 10 20C15.53 20 20 15.53 20 10C20 4.47 15.53 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z";
-  path.style.fill = "white";
 
   zoneBtn.appendChild(btn);
   btn.appendChild(span);
-  span.appendChild(svg);
-  svg.appendChild(path);
+  span.appendChild(img);
 
-  btn.addEventListener("click", listenTagToDeleteUstensil);
+  img.addEventListener("click", listenTagToDeleteUstensil);
 }
 
 function listenTagToDelete(e) {
-  const textValue = e.target.textContent;
+  const textValue = e.target.id;
 
   let index = listIngredientSelect.indexOf(textValue);
 
@@ -500,7 +492,7 @@ function listenTagToDelete(e) {
 }
 
 function listenTagToDeleteUstensil(e) {
-  const textValue = e.target.textContent;
+  const textValue = e.target.id;
 
   let index = listUtensilsSelect.indexOf(textValue);
 
@@ -520,7 +512,7 @@ function listenTagToDeleteUstensil(e) {
 }
 
 function listenTagToDeleteAppliance(e) {
-  const textValue = e.target.textContent;
+  const textValue = e.target.id;
 
   let index = listApplianceSelect.indexOf(textValue);
 
