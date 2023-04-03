@@ -38,8 +38,6 @@ function buildDomElements(recipes) {
 }
 
 function buildRecipes(recipes) {
-  //const buttonTag = document.getElementById("tag");
-
   cardResultForDisplay.innerHTML = "";
 
   recipes.forEach((response) => {
@@ -170,7 +168,7 @@ function buildUtensils(ustensil) {
   });
 }
 
-function buildIngredients(ingredients, canAddToIngredients = true) {
+function buildIngredients(ingredients) {
   listIngredient.innerHTML = "";
   ingredients.forEach((currentIngredient) => {
     const ingredientListItem = document.createElement("li");
@@ -280,7 +278,8 @@ function handlePermanentFilterAppliance(e) {
   let filterWithTag = performBySearch(recipesData);
 
   filterWithTag = performByApplianceTags(filterWithTag);
-  console.log("recette filtré après click", filterWithTag);
+  filterWithTag = performByUstensilTags(filterWithTag);
+  filterWithTag = performByIngredientTags(filterWithTag);
 
   buildFilterButtonAppliance(e.currentTarget.textContent);
   buildDomElements(filterWithTag);
