@@ -53,7 +53,7 @@ function buildRecipes(recipes) {
 
     //contain card
     const containCard = document.createElement("div");
-    containCard.className = "d-flex card-body bg-light";
+    containCard.className = "d-flex card-body bg-light overflow-auto";
 
     //contain description card
     const containDescription = document.createElement("div");
@@ -84,7 +84,7 @@ function buildRecipes(recipes) {
 
     //div contain second
     const containerTimeAndDescription = document.createElement("div");
-    containerTimeAndDescription.className = "w-50";
+    containerTimeAndDescription.className = "w-50 h-100 overflow-auto";
 
     const containTimeDiv = document.createElement("div");
     containTimeDiv.className = "w-100 text-right";
